@@ -19,9 +19,9 @@ function passwordValidation(password) {
 
 function loginValidation(email, password) {
   if (emailValidation(email) !== undefined) {
-    return console.log(emailValidation(email));
+    return emailValidation(email);
   }
-  return console.log(passwordValidation(password));
+  return passwordValidation(password);
 }
 
 module.exports = loginValidation;

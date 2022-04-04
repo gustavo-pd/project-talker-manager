@@ -12,6 +12,7 @@ const validateDate = require('./middlewares/validateDate');
 const validateRate = require('./middlewares/validateRate');
 const validateTalk = require('./middlewares/validateTalk');
 const postTalker = require('./middlewares/postTalker');
+const putTalker = require('./middlewares/putTalker');
 
 const app = express();
 app.use(bodyParser.json());
@@ -39,6 +40,17 @@ app.post(
   validateDate,
   validateRate,
   postTalker,
+);
+
+app.put(
+  '/talker/:id',
+  validateToken,
+  validateName,
+  validateAge,
+  validateTalk,
+  validateDate,
+  validateRate,
+  putTalker,
 );
 
 app.listen(PORT, () => {

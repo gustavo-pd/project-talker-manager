@@ -9,15 +9,15 @@ function putTalker(req, res) {
   const { name, age, talk } = req.body;
   const talkers = readJsonFile(file);
 
-  const findId = talkers.find((i) => i.id === parseInt(id, 10));
+  const findId = talkers.find((i) => i.id === Number(id));
   talkers[findId] = { ...talkers[findId], name, age, talk };
 
   const talkersList = JSON.stringify(talkers);
 
   fs.writeFileSync(file, talkersList); // id = number(id)
-  id = parseInt(id, 10);
+  id = Number(id);
 
-  return res.status(HTTP_OK_STATUS).json({ name, age, id, talk });
+  return res.status(HTTP_OK_STATUS).json({ id, name, age, talk });
 }
 
 module.exports = putTalker;

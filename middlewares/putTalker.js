@@ -5,7 +5,7 @@ const file = 'talker.json';
 const HTTP_OK_STATUS = 200;
 
 function putTalker(req, res) {
-  let { id } = req.params; // let
+  let { id } = req.params;
   const { name, age, talk } = req.body;
   const talkers = readJsonFile(file);
 
@@ -17,7 +17,7 @@ function putTalker(req, res) {
   fs.writeFileSync(file, talkersList); // id = number(id)
   id = parseInt(id, 10);
 
-  return res.status(HTTP_OK_STATUS).json({ id, name, age, talk });
+  return res.status(HTTP_OK_STATUS).json({ name, age, id, talk });
 }
 
 module.exports = putTalker;

@@ -15,7 +15,7 @@ function putTalker(req, res) {
   fs.writeFileSync(file, JSON.stringify(talkers));
   id = Number(id);
 
-  return res.status(HTTP_OK_STATUS).json({ name, age, id, talk });
+  return res.status(HTTP_OK_STATUS).json({ id, name, age, talk });
 }
 
 module.exports = putTalker;

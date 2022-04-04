@@ -1,20 +1,23 @@
 const fs = require('fs');
 const readJsonFile = require('../helpers/readJsonFile');
 
+const file = 'talker.json';
 const HTTP_OK_STATUS = 200;
 
 function putTalker(req, res) {
   let { id } = req.params;
   const { name, age, talk } = req.body;
-  const talkers = readJsonFile('talker.json');
+  const talkers = readJsonFile(file);
 
-  const findId = talkers.find((i) => i.id === Number(id));
+  const findId = talkers.findIndex((i) => i.id === parseInt(id, 10));
   talkers[findId] = { ...talkers[findId], name, age, talk };
 
-  fs.writeFileSync('talker.json', JSON.stringify(talkers));
-  id = Number(id);
+  const talkersList = JSON.stringify(talkers);
 
-  return res.status(HTTP_OK_STATUS).json({ id, name, age, talk });
+  fs.writeFileSync(file, talkersList);
+  id = parseInt(id, 10);
+
+  return res.status(HTTP_OK_STATUS).json({ name, age, id, talk });
 }
 
 module.exports = putTalker;

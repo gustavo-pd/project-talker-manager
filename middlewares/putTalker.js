@@ -12,9 +12,7 @@ function putTalker(req, res) {
   const findId = talkers.find((i) => i.id === Number(id));
   talkers[findId] = { ...talkers[findId], name, age, talk };
 
-  const talkersList = JSON.stringify(talkers);
-
-  fs.writeFileSync(file, talkersList); // id = number(id)
+  fs.writeFileSync('talker.json', JSON.stringify(talkers));
   id = Number(id);
 
   return res.status(HTTP_OK_STATUS).json({ id, name, age, talk });

@@ -14,6 +14,7 @@ const validateTalk = require('./middlewares/validateTalk');
 const postTalker = require('./middlewares/postTalker');
 const putTalker = require('./middlewares/putTalker');
 const deleteTalker = require('./middlewares/deleteTalker');
+const searchTalker = require('./middlewares/searchTalker');
 
 const app = express();
 app.use(bodyParser.json());
@@ -27,6 +28,12 @@ app.get('/', (_request, response) => {
 });
 
 app.get('/talker', getTalkers);
+
+app.get(
+  '/talker/search',
+  validateToken,
+  searchTalker,
+);
 
 app.get('/talker/:id', getTalkerById);
 

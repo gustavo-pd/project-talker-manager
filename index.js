@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const getTalkers = require('./middlewares/getTalkers');
 const getTalkerById = require('./middlewares/getTalkerById');
 const postLogin = require('./middlewares/postLogin');
+
 const validateToken = require('./middlewares/validateToken');
 const validateName = require('./middlewares/validateName');
 const validateAge = require('./middlewares/validateAge');
@@ -34,9 +35,9 @@ app.post(
   validateToken,
   validateName,
   validateAge,
+  validateTalk,
   validateDate,
   validateRate,
-  validateTalk,
   postTalker,
 );
 

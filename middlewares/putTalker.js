@@ -7,7 +7,7 @@ const file = 'talker.json';
 function putTalker(req, res) {
   const { name, age, talk } = req.body;
   const { id } = req.params;
-  const talker = { name, age, id: Number(id), talk };
+  const talker = { id: Number(id), name, age, talk };
   const talkers = readJsonFile(file);
   const findId = talkers.findIndex((i) => i.id === Number(id));
   talkers[findId] = { ...talkers[findId], name, age, talk };
